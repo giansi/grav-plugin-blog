@@ -1,0 +1,9 @@
+{% set collection = page.collection() %}
+
+{% for child in collection %}
+    {% include 'partials/_blog_item.html.twig' with {'page':child, 'truncate':true} %}
+{% endfor %}
+
+{% if config.plugins.pagination.enabled and collection.params.pagination %}
+    {% include 'partials/pagination.html.twig' with {'pagination':collection.params.pagination} %}
+{% endif %}

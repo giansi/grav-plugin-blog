@@ -1,0 +1,4 @@
+{% if config.plugins.relatedpages.enabled and related_pages|length > 0 %}
+    <h4>Related Posts</h4>
+    {% include 'partials/relatedpages.html.twig' %}
+{% endif %}
