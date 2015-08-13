@@ -43,6 +43,8 @@ The plugin comes with several templates, each one responsible to render a partic
 
 Each name is self explicative, so it is quite simple to understand that `posts` template renders the blog's posts list, while the `post` one renders the single post item.
 
+>>>>> Many of those templates, to be displayed, require other plugins, which are: `archives`, `breadcrumbs`, `feed`, `random`, `relatedpages`, `simplesearch`, `taxonomylist`. Although none of them are mandatory: you should install them too. At last, you should also install `pagination` plugin, to correctly paginate blog posts.
+
 To render a template just include it as follows:
 
     {% include 'partials/_posts.html.twig' %}
@@ -52,7 +54,7 @@ where you need to display that section. For example, if you want to display the 
     {% include 'partials/_breadcrumbs.html.twig' %}
     {% include 'partials/_posts.html.twig' %}
 
-The `sidebar`template is a "kind of shortcut" to render a sidebar as it is rendered in the Antimatter theme. It is fully customizable, changing the plugin configuration:
+The `sidebar`template is a "kind of shortcut" to render the sidebar as it is rendered in the Antimatter theme. It is fully customizable, changing the plugin configuration:
         
     sidebar:
         _simple_search: true
