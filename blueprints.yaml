@@ -1,5 +1,5 @@
 name: Blog
-version: 1.0.0
+version: 1.0.2
 description: "Blog is a Grav plugin that makes available the functionalities to add a blog to each Grav theme"
 icon: file-text-o
 author:
