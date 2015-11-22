@@ -1,0 +1,8 @@
+{% use 'blog/pure/blog_theme.html.twig' %}
+
+{% block content %}
+{% set collection = page.collection() %}
+{{ block('breadcrumbs') }}
+{{ block('blog_content') }}
+{{ block('blog_posts') }}
+{% endblock %}

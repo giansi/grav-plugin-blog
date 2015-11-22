@@ -1,0 +1,126 @@
+$core-text: #444
+$core-accent: #1BB3E9
+$border-color: #EEEEEE
+$border-radius: 3px
+$font-weight-bold: 600
+$padding-horiz: 7rem
+$padding-vert: 3rem
+$core-font-size: 1rem !default
+$core-line-height: 1.7 !default
+
+.blog 
+    img
+        border: 0
+        max-width: 100%
+
+    .list-item
+        border-bottom: 1px solid $border-color
+        margin-bottom: $padding-vert
+
+        &:last-child
+            border-bottom: 0
+
+        .list-blog-header
+            position: relative
+
+            h4
+                margin-bottom: 0.5rem
+
+            a
+                color: $core-text
+
+                &:hover
+                    color: $core-accent
+
+            img
+                display: block
+                margin-top: 1rem
+                border-radius: $border-radius
+
+            .list-blog-date
+                float: right
+                text-align: center
+
+                span
+                    display: block
+                    font-size: 1.75rem
+                    font-weight: $font-weight-bold
+                    line-height: 110%
+
+                em
+                    display: block
+                    border-top: 1px solid $border-color
+                    font-style: normal
+                    text-transform: uppercase
+
+        // Bigger first para
+    .blog-content-item
+        .list-blog-padding > p:nth-child(2)
+            font-size: $core-font-size + 0.2rem
+
+    // Tags
+    .tags
+        a
+            display: inline-block
+            font-size: $core-font-size - 0.2rem
+            border: 1px solid $core-accent
+            border-radius: $border-radius
+            padding: 0.1rem 0.4rem
+            margin-bottom: 0.2rem
+            text-transform: uppercase
+
+    // Archives & Related-Pages
+    .archives, .related-pages
+        padding: 0
+            list-style: none
+
+        li
+            border-bottom: 1px solid $border-color
+            line-height: $core-font-size + 1rem
+
+            &:last-child
+                border-bottom: 0
+
+    .related-pages
+        li
+            a
+                display: block
+
+        .score
+            display: block
+            float: right
+            color: #999
+            font-size: 85%
+
+    // Syndicate
+    .syndicate
+        a
+            margin-bottom: 1rem
+
+    // Breadcrumbs
+    div#breadcrumbs
+        padding-left: 0
+
+
+    // Sidebar
+    .sidebar
+        padding-left: 3rem
+
+        .sidebar-content
+            h4
+                margin-bottom: 1rem
+
+            p, ul
+                margin-top: 1rem
+
+            margin-bottom: $padding-vert
+
+    // Pagination
+    ul.pagination
+        margin: 0 0 $padding-vert
+        text-align: center
+
+    // Prev / Next
+    .prev-next
+        margin-top: 5rem
+        text-align: center

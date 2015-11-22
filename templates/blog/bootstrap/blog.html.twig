@@ -1,0 +1,11 @@
+{% use 'blog/bootstrap/blog_theme.html.twig' %}
+
+{% block content %}
+{% set collection = page.collection() %}
+<div class="container">
+    {{ block('breadcrumbs') }}
+    {{ block('blog_content') }}
+    {{ block('blog_posts') }}
+    {{ block('pagination') }}
+</div>
+{% endblock %}

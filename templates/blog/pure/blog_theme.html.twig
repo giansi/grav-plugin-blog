@@ -1,0 +1,258 @@
+
+{% block breadcrumbs %}
+{% if config.plugins.breadcrumbs.enabled %}
+{% include 'partials/breadcrumbs.html.twig' %}
+{% endif %}
+{% endblock %}
+
+{% block pagination %}
+{% if config.plugins.pagination.enabled and collection.params.pagination %}
+{% include 'partials/pagination.html.twig' with {'base_url':page.url, 'pagination':collection.params.pagination} %}
+{% endif %}  
+{% endblock %}
+
+{% block blog_content %}
+{{ page.content }}
+{% endblock %}
+
+{% block blog_posts %}
+<div class="blog blog-content-list content-wrapper grid pure-g">
+    <div class="block pure-u-2-3">    
+    {{ block('posts') }}
+    {{ block('pagination') }}
+    </div>
+    <div class="sidebar block size-1-3 pure-u-1-3">
+    {{ block('sidebar') }}
+    </div>
+</div>
+{% endblock %}
+
+{% block posts %}
+{% for child in collection %} 
+{% set blog = page %}
+{% set truncate = true %}
+{% set page = child %}
+{{ block('post') }}
+{% endfor %} 
+{% endblock %}
+
+{% block blog_post %}
+{% if base_url == base_url_relative %}
+    {% set feed_url = base_url~'/'~page.parent.slug %}
+{% endif  %}
+{% set blog = page.parent %}
+{% set truncate = false %}
+{% set big_header = true %}
+{{ block('breadcrumbs') }}
+<div class="blog blog-content-item grid pure-g">
+    <div class="block pure-u-2-3">
+        {{ block('post') }}  
+    </div>
+    <div class="sidebar block size-1-3 pure-u-1-3">
+        {{ block('sidebar') }}
+    </div>
+</div>
+{% endblock %}
+
+{% block post %}
+{{ block('urls') }}
+{% set header_image = page.header.header_image|defined(true) %}
+{% set header_image_width  = page.header.header_image_width|defined(900) %}
+{% set header_image_height = page.header.header_image_height|defined(300) %}
+{% set header_image_file = page.header.header_image_file %}
+<div class="list-item">
+{{ block('post_header') }}
+{{ block('post_contents') }}
+</div>
+{% endblock %}
+
+{% block post_header %}
+<div class="list-blog-header">
+    {{ block('post_header_date') }} 
+    {{ block('post_header_title') }}      
+    {{ block('post_header_taxonomy') }}
+    {{ block('post_header_image') }} 
+</div>
+{% endblock %}
+
+{% block post_header_title %}   
+{% set title_tag = title_tag|default('h4') %}
+{% if page.header.link %}
+    <{{ title_tag }}>
+        {% if page.header.continue_link is not sameas(false) %}
+        <a href="{{ page.url }}"><i class="fa fa-angle-double-right"></i></a>
+        {% endif %}
+        <a href="{{ page.header.link }}">{{ page.title }}</a>
+    </{{ title_tag }}>
+{% else %}
+    <{{ title_tag }}><a href="{{ page.url }}">{{ page.title }}</a></{{ title_tag }}>
+{% endif %}
+{% endblock %}
+
+{% block post_header_taxonomy %}
+{% if page.taxonomy.tag %}
+<span class="tags">
+    {% for tag in page.taxonomy.tag %}
+    <a href="{{ blog.url }}/tag{{ config.system.param_sep }}{{ tag }}">{{ tag }}</a>
+    {% endfor %}
+</span>
+{% endif %}
+{% endblock %}
+
+{% block post_header_date %}
+<span class="list-blog-date">
+    <span>{{ page.date|date("d") }}</span>
+    <em>{{ page.date|date("M") }}</em>
+</span>
+{% endblock %}
+
+{% block post_header_date_extended %}
+<div class="list-blog-date-extended">
+    <i class="fa fa-calendar"></i> <span>{{ page.date|date("F j, Y, g:i a") }}</span>
+</div>
+{% endblock %}
+
+{% block post_header_image %}   
+{% if header_image %}
+    {% if header_image_file %}
+        {% set header_image_media = page.media.images[header_image_file] %}
+    {% else %}
+        {% set header_image_media = page.media.images|first %}
+    {% endif %}
+    {{ header_image_media.cropZoom(header_image_width, header_image_height).html }}
+{% endif %}
+{% endblock %}
+
+{% block post_contents %}
+<div class="list-blog-padding">
+{% if page.header.continue_link is sameas(false) %}
+    {{ page.content }}
+    {% if not truncate %}
+    {% set show_prev_next = true %}
+    {% endif %}
+{% elseif truncate and page.summary != page.content %}
+    {{ page.summary }}
+    <p><a href="{{ page.url }}">Continue Reading...</a></p>
+{% elseif truncate %}
+    {% if page.summary != page.content %}
+        {{ page.content|truncate(550) }}
+    {% else %}
+        {{ page.content }}
+    {% endif %}
+    <p><a href="{{ page.url }}">Continue Reading...</a></p>
+{% else %}
+    {{ page.content }}
+    {% set show_prev_next = true %}
+{% endif %}
+    {{ block('prev_next_buttons') }}  
+</div>
+{% endblock %}
+
+{% block prev_next_buttons %}
+{% if show_prev_next or force_hide_prev_next|default(false) %}
+<p class="prev-next">
+    {% if not page.isFirst %}
+    <a class="button" href="{{ page.nextSibling.url }}"><i class="fa fa-chevron-left"></i> Next Post</a>
+    {% endif %}
+
+    {% if not page.isLast %}
+    <a class="button" href="{{ page.prevSibling.url }}">Previous Post <i class="fa fa-chevron-right"></i></a>
+    {% endif %}
+</p>
+{% endif %}
+{% endblock %}
+
+{% block sidebar %} 
+{% set title_tag = title_tag|default('h4') %}
+{% set feed_url = blog.url == '/' or blog.url == base_url_relative ? (base_url_relative~'/'~blog.slug) : blog.url %}
+{% set new_base_url = blog.url == '/' ? '' : blog.url %}
+{{ block('simple_search') }}   
+{{ block('sidebar_taxonomy') }}   
+{{ block('related_pages') }}   
+{{ block('random_page') }}   
+{{ block('archives') }}   
+{{ block('feed') }}
+{% endblock %}
+
+{% block simple_search %}
+{% if config.plugins.simplesearch.enabled %}
+<div class="sidebar-content">
+    <{{ title_tag }}>SimpleSearch</{{ title_tag }}>
+    {% include 'partials/simplesearch_searchbox.html.twig' %}
+</div>
+{% endif %}
+{% endblock %}
+
+{% block sidebar_taxonomy %}
+{% if config.plugins.taxonomylist.enabled %}
+<div class="sidebar-content">
+    <{{ title_tag }}>Popular Tags</{{ title_tag }}>
+    
+    {% set taxonomy = "tag" %}
+    {% set taxlist = taxonomylist.get() %}
+    {% if taxlist %}
+    <span class="tags">
+        {% for tax,value in taxlist[taxonomy] %}
+            {% set active = uri.param(taxonomy) == tax ? ' active' : '' %}
+            <a class="btn btn-primary tags-cloud{{ active }}" href="{{ base_url }}/{{ taxonomy }}{{ config.system.param_sep }}{{ tax|e('url') }}">{{ tax }}</a>
+        {% endfor %}
+    </span>
+    {% endif %}
+</div>
+{% endif %}
+{% endblock %}
+
+{% block sidebar_topictags %}
+{% if config.plugins.topicmenu.enabled %}
+<div class="sidebar-content">
+    <{{ title_tag }}>Popular Tags</{{ title_tag }}>
+    
+    {% for taxlist in topics_tags %}
+    <span class="tags">
+        {% for count,value in taxlist %}
+            <a class="btn btn-primary tags-cloud" href="{{ base_url }}/tag:{{ value }}">
+                {{ value }}
+            </a>
+        {% endfor %}
+    </span>
+    {% endfor %}
+</div>
+{% endif %}
+{% endblock %}
+
+{% block related_pages %}
+{% if config.plugins.relatedpages.enabled and related_pages|length > 0 %}
+    <{{ title_tag }}>Related Posts</{{ title_tag }}>
+    {% include 'partials/relatedpages.html.twig' %}
+{% endif %}
+{% endblock %}
+    
+{% block random_page %}
+{% if config.plugins.random.enabled %}
+<div class="sidebar-content">
+    <{{ title_tag }}>Random Article</{{ title_tag }}>
+    <a class="button" href="{{ base_url_relative }}/random"><i class="fa fa-retweet"></i> I'm Feeling Lucky!</a>
+</div>
+{% endif %}
+{% endblock %}
+    
+{% block archives %}
+{% if config.plugins.archives.enabled %}
+<div class="sidebar-content">
+    <{{ title_tag }}>Archives</{{ title_tag }}>
+	{% include 'partials/archives.html.twig' with {'base_url':new_base_url} %}
+</div>
+{% endif %}
+{% endblock %}
+    
+{% block feed %}
+{% if config.plugins.feed.enabled %}
+<div class="sidebar-content">
+    <{{ title_tag }}>Syndicate</{{ title_tag }}>
+    <div class="btn-group">
+        <a class="btn btn-warning" href="{{ feed_url }}.atom"><i class="fa fa-rss-square"></i> Atom 1.0</a>
+        <a class="btn btn-warning" href="{{ feed_url }}.rss"><i class="fa fa-rss-square"></i> RSS</a>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

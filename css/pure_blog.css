@@ -1,0 +1,102 @@
+.blog img {
+  border: 0;
+  max-width: 100%;
+}
+.blog .list-item {
+  border-bottom: 1px solid #EEEEEE;
+  margin-bottom: 3rem;
+}
+.blog .list-item:last-child {
+  border-bottom: 0;
+}
+.blog .list-item .list-blog-header {
+  position: relative;
+}
+.blog .list-item .list-blog-header h4 {
+  margin-bottom: 0.5rem;
+}
+.blog .list-item .list-blog-header a {
+  color: #444;
+}
+.blog .list-item .list-blog-header a:hover {
+  color: #1BB3E9;
+}
+.blog .list-item .list-blog-header img {
+  display: block;
+  margin-top: 1rem;
+  border-radius: 3px;
+}
+.blog .list-item .list-blog-header .list-blog-date {
+  float: right;
+  text-align: center;
+}
+.blog .list-item .list-blog-header .list-blog-date span {
+  display: block;
+  font-size: 1.75rem;
+  font-weight: 600;
+  line-height: 110%;
+}
+.blog .list-item .list-blog-header .list-blog-date em {
+  display: block;
+  border-top: 1px solid #EEEEEE;
+  font-style: normal;
+  text-transform: uppercase;
+}
+.blog .blog-content-item .list-blog-padding > p:nth-child(2) {
+  font-size: 1.2rem;
+}
+.blog .tags a {
+  display: inline-block;
+  font-size: 0.8rem;
+  border: 1px solid #1BB3E9;
+  border-radius: 3px;
+  padding: 0.1rem 0.4rem;
+  margin-bottom: 0.2rem;
+  text-transform: uppercase;
+}
+.blog .archives, .blog .related-pages {
+  padding: 0;
+  padding-list-style: none;
+}
+.blog .archives li, .blog .related-pages li {
+  border-bottom: 1px solid #EEEEEE;
+  line-height: 2rem;
+}
+.blog .archives li:last-child, .blog .related-pages li:last-child {
+  border-bottom: 0;
+}
+.blog .related-pages li a {
+  display: block;
+}
+.blog .related-pages .score {
+  display: block;
+  float: right;
+  color: #999;
+  font-size: 85%;
+}
+.blog .syndicate a {
+  margin-bottom: 1rem;
+}
+.blog div#breadcrumbs {
+  padding-left: 0;
+}
+.blog .sidebar {
+  padding-left: 3rem;
+}
+.blog .sidebar .sidebar-content {
+  margin-bottom: 3rem;
+}
+.blog .sidebar .sidebar-content h4 {
+  margin-bottom: 1rem;
+}
+.blog .sidebar .sidebar-content p, .blog .sidebar .sidebar-content ul {
+  margin-top: 1rem;
+}
+.blog ul.pagination {
+  margin: 0 0 3rem;
+  text-align: center;
+}
+.blog .prev-next {
+  margin-top: 5rem;
+  text-align: center;
+}

@@ -1,12 +1,12 @@
 name: Blog
-version: 1.0.2
+version: 1.1.0
 description: "Blog is a Grav plugin that makes available the functionalities to add a blog to each Grav theme"
 icon: file-text-o
 author:
   name: Giansimon Diblas
   email: info@diblas.net
   url: http://diblas.net
-homepage: https://github.com/giansi/grav-plugin-blog
+homepage: http://diblas.net/plugins/blog-grav-cms-plugin-adds-blog-functionalities-to-each-grav-theme
 demo: -
 keywords: blog, theme
 bugs: https://github.com/giansi/grav-plugin-blog/issues
@@ -26,21 +26,19 @@ form:
         validate:
           type: bool
 
-      buttons._simple_search:
-        type: toggle
-        label: Simple search
-        highlight: 1
-        default: 1
+      framework:
+        type: select
+        label: Framework
+        size: small
+        default: pure
         options:
-          1: Enabled
-          0: Disabled
-        validate:
-          type: bool
-        help: Enable or disable the simple search template from the sidebar
+          pure: pure
+          bootstrap: bootstrap
+        help: Choose the framework to use
 
-      buttons._related_posts:
+      add_framework_assets:
         type: toggle
-        label: Related posts
+        label: Add framework assets
         highlight: 1
         default: 1
         options:
@@ -48,52 +46,4 @@ form:
           0: Disabled
         validate:
           type: bool
-        help: Enable or disable the related posts template from the sidebar
-
-      buttons._random:
-        type: toggle
-        label: Random
-        highlight: 1
-        default: 1
-        options:
-          1: Enabled
-          0: Disabled
-        validate:
-          type: bool
-        help: Enable or disable the random template from the sidebar
-
-      buttons._taxonomy_list:
-        type: toggle
-        label: Taxonomy list
-        highlight: 1
-        default: 1
-        options:
-          1: Enabled
-          0: Disabled
-        validate:
-          type: bool
-        help: Enable or disable the taxonomy list template from the sidebar
-
-      buttons._archives:
-        type: toggle
-        label: Archives
-        highlight: 1
-        default: 1
-        options:
-          1: Enabled
-          0: Disabled
-        validate:
-          type: bool
-        help: Enable or disable the archives template from the sidebar
-
-      buttons._feed:
-        type: toggle
-        label: Feed
-        highlight: 1
-        default: 1
-        options:
-          1: Enabled
-          0: Disabled
-        validate:
-          type: bool
-        help: Enable or disable the feed template from the sidebar
+        help: Automatically adds selected framework assets, when true

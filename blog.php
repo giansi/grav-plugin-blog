@@ -39,8 +39,47 @@ class BlogPlugin extends Plugin
      */
     public function onTwigSiteVariables()
     {
-        $this->grav['assets']->add('plugin://blog/css-compiled/template.css');
-	        
-        $this->grav['twig']->twig_vars['blog_sidebar'] = $this->config->get('plugins.blog.sidebar');
+        $framework = strtolower($this->config->get('plugins.blog.framework'));
+        if (empty($framework)){
+            throw new \InvalidArgumentException('The blog "framework" variable value must be defined. At the moment it is empty. If you are overriding the default configuration, please define the "framework" variable with a valid value.');
+        }
+        
+        if (!preg_grep("/" . $framework . "/i", array(
+            "pure",
+            "bootstrap",
+        ))){
+            throw new \InvalidArgumentException(sprintf('The blog "framework" variable value must be one of "pure" or "bootstrap". You gave "%s"', $framework));
+        }
+        
+        $this->grav['assets']->add(sprintf('plugin://blog/css/%s_blog.css', $framework));
+        if ($this->config->get('plugins.blog.add_framework_assets')) {
+            $method = 'add' . ucfirst($framework);
+            $this->$method();
+        }
+        
+        $twig = $this->grav['twig'];
+        $feedUrl = $baseUrl = $this->grav['page']->parent()->url();
+        if ($baseUrl == '/') {
+            $baseUrl = '';
+        }
+        if ($baseUrl == $twig->twig_vars['base_url_relative']) {
+            $feedUrl = $baseUrl . $this->grav['page']->parent()->slug();
+        }
+        
+        $twig->twig_vars['framework'] = $framework;
+        $twig->twig_vars['base_url'] = $baseUrl;
+        $twig->twig_vars['feed_url'] = $feedUrl;
     }
+    
+    private function addBootstrap()
+    {
+        $this->grav['assets']->add('plugin://blog/vendor/bootstrap/css/bootstrap.min.css', 100);
+        $this->grav['assets']->add('plugin://blog/vendor/bootstrap/js/bootstrap.min.js', 100);
+    }
+    
+    private function addPure()
+    {
+        $this->grav['assets']->add('plugin://blog/vendor/pure/grids-min.css', 100);
+    }
+            
 }

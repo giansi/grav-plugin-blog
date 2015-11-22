@@ -1,0 +1,55 @@
+.list-blog-header
+    h1, h2, h3, h4, h6, h6
+        a
+            text-decoration: none
+            color: #333 
+
+    .list-blog-date
+        float: right
+        margin-top: 4rem
+        text-align: center
+        font-size: 2.5rem
+        width: 8rem
+        font-weight: bold
+        line-height: 2.4rem
+
+        .month
+            width: 100%
+            font-weight: normal
+
+    .list-blog-date-extended
+        padding: 1rem 0
+
+    img
+        display: block
+        margin: 1rem 0
+        border-radius: 3px
+
+.list-blog-padding p:nth-child(1) 
+    font-size: 2.2rem
+
+@media screen and (min-width: 992px)
+    .list-blog-date-extended
+        display: none
+
+@media screen and (max-width: 991px)
+    .list-blog-date
+        display: none
+
+    .list-blog-date-extended
+        display: block 
+
+.tags
+    margin-bottom: 1.5rem
+
+    a
+        margin-right: 0.3rem
+        font-weight: bold
+        margin-bottom: 0.6rem
+        color: #fff !important
+
+    .btn
+        padding: 0.2rem 1.8rem
+        -moz-box-shadow: #333 1px 1px 5px
+        -webkit-box-shadow: #333 1px 1px 5px
+        box-shadow: #333 1px 1px 5px
