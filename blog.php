@@ -2,6 +2,7 @@
 namespace Grav\Plugin;
 
 use \Grav\Common\Plugin;
+use Grav\Common\Twig\Twig;
 
 class BlogPlugin extends Plugin
 {
@@ -58,17 +59,8 @@ class BlogPlugin extends Plugin
         }
         
         $twig = $this->grav['twig'];
-        $feedUrl = $baseUrl = $this->grav['page']->parent()->url();
-        if ($baseUrl == '/') {
-            $baseUrl = '';
-        }
-        if ($baseUrl == $twig->twig_vars['base_url_relative']) {
-            $feedUrl = $baseUrl . $this->grav['page']->parent()->slug();
-        }
-        
         $twig->twig_vars['framework'] = $framework;
-        $twig->twig_vars['base_url'] = $baseUrl;
-        $twig->twig_vars['feed_url'] = $feedUrl;
+        $this->setUrls($twig);
     }
     
     private function addBootstrap()
@@ -81,5 +73,25 @@ class BlogPlugin extends Plugin
     {
         $this->grav['assets']->add('plugin://blog/vendor/pure/grids-min.css', 100);
     }
+    
+    private function setUrls(Twig $twig)
+    {
+        $parent = $this->grav['page']->parent();
+        if (null === $parent) {
+            $twig->twig_vars['feed_url'] = $twig->twig_vars['base_url'] = '';
             
+            return;
+        }
+        
+        $feedUrl = $baseUrl = $parent->url();
+        if ($baseUrl == '/') {
+            $baseUrl = '';
+        }
+        if ($baseUrl == $twig->twig_vars['base_url_relative']) {
+            $feedUrl = $baseUrl . $parent->slug();
+        }
+        
+        $twig->twig_vars['base_url'] = $baseUrl;
+        $twig->twig_vars['feed_url'] = $feedUrl;
+    }
 }
