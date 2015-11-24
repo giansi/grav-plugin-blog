@@ -37,9 +37,6 @@
 {% endblock %}
 
 {% block blog_post %}
-{% if base_url == base_url_relative %}
-    {% set feed_url = base_url~'/'~page.parent.slug %}
-{% endif  %}
 {% set blog = page.parent %}
 {% set truncate = false %}
 {% set big_header = true %}
@@ -164,8 +161,7 @@
 
 {% block sidebar %} 
 {% set title_tag = title_tag|default('h4') %}
-{% set feed_url = blog.url == '/' or blog.url == base_url_relative ? (base_url_relative~'/'~blog.slug) : blog.url %}
-{% set new_base_url = blog.url == '/' ? '' : blog.url %}
+
 {{ block('simple_search') }}   
 {{ block('sidebar_taxonomy') }}   
 {{ block('related_pages') }}   
@@ -194,7 +190,7 @@
     <span class="tags">
         {% for tax,value in taxlist[taxonomy] %}
             {% set active = uri.param(taxonomy) == tax ? ' active' : '' %}
-            <a class="btn btn-primary tags-cloud{{ active }}" href="{{ base_url }}/{{ taxonomy }}{{ config.system.param_sep }}{{ tax|e('url') }}">{{ tax }}</a>
+            <a class="btn btn-primary tags-cloud{{ active }}" href="{{ blog_base_url }}/{{ taxonomy }}{{ config.system.param_sep }}{{ tax|e('url') }}">{{ tax }}</a>
         {% endfor %}
     </span>
     {% endif %}
@@ -210,7 +206,7 @@
     {% for taxlist in topics_tags %}
     <span class="tags">
         {% for count,value in taxlist %}
-            <a class="btn btn-primary tags-cloud" href="{{ base_url }}/tag:{{ value }}">
+            <a class="btn btn-primary tags-cloud" href="{{ blog_base_url }}/tag:{{ value }}">
                 {{ value }}
             </a>
         {% endfor %}
@@ -240,7 +236,7 @@
 {% if config.plugins.archives.enabled %}
 <div class="sidebar-content">
     <{{ title_tag }}>Archives</{{ title_tag }}>
-	{% include 'partials/archives.html.twig' with {'base_url':new_base_url} %}
+	{% include 'partials/archives.html.twig' with {'base_url':blog_base_url} %}
 </div>
 {% endif %}
 {% endblock %}
@@ -250,8 +246,8 @@
 <div class="sidebar-content">
     <{{ title_tag }}>Syndicate</{{ title_tag }}>
     <div class="btn-group">
-        <a class="btn btn-warning" href="{{ feed_url }}.atom"><i class="fa fa-rss-square"></i> Atom 1.0</a>
-        <a class="btn btn-warning" href="{{ feed_url }}.rss"><i class="fa fa-rss-square"></i> RSS</a>
+        <a href="{{ blog_feed_url }}.atom"><i class="fa fa-rss-square"></i> Atom 1.0</a>
+        <a href="{{ blog_feed_url }}.rss"><i class="fa fa-rss-square"></i> RSS</a>
     </div>
 </div>
 {% endif %}

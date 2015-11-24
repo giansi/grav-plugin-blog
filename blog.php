@@ -78,7 +78,7 @@ class BlogPlugin extends Plugin
     {
         $parent = $this->grav['page']->parent();
         if (null === $parent) {
-            $twig->twig_vars['feed_url'] = $twig->twig_vars['base_url'] = '';
+            $twig->twig_vars['blog_feed_url'] = $twig->twig_vars['blog_base_url'] = '';
             
             return;
         }
@@ -91,7 +91,7 @@ class BlogPlugin extends Plugin
             $feedUrl = $baseUrl . $parent->slug();
         }
         
-        $twig->twig_vars['base_url'] = $baseUrl;
-        $twig->twig_vars['feed_url'] = $feedUrl;
+        $twig->twig_vars['blog_base_url'] = $baseUrl;
+        $twig->twig_vars['blog_feed_url'] = $feedUrl;
     }
 }
