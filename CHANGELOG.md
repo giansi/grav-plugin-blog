@@ -1,3 +1,9 @@
+# v1.1.2
+## 11/25/2015
+
+1. [](#bugfix)
+    * The post first paragraph is now enlarged just for the full post and no more for the posts list
+
 # v1.1.1
 ## 11/25/2015
 
