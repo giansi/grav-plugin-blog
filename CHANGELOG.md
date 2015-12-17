@@ -1,3 +1,9 @@
+# v1.1.4
+## 12/17/2015
+
+1. [](#bugfix)
+    * Fixed tags in the blog are not directing to the post but to the home page
+
 # v1.1.3
 ## 12/13/2015
 
