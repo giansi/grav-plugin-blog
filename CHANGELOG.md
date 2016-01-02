@@ -1,3 +1,10 @@
+# v1.1.5
+## 01/02/2016
+
+1. [](#new)
+    * Renamed plugin to BlogInjector to avoid confusion
+    * Added Breadcrumbs dependency
+
 # v1.1.4
 ## 12/17/2015
 

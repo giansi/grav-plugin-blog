@@ -4,7 +4,7 @@ namespace Grav\Plugin;
 use \Grav\Common\Plugin;
 use Grav\Common\Twig\Twig;
 
-class BlogPlugin extends Plugin
+class BlogInjectorPlugin extends Plugin
 {
     /**
      * @return array
@@ -52,7 +52,7 @@ class BlogPlugin extends Plugin
             throw new \InvalidArgumentException(sprintf('The blog "framework" variable value must be one of "pure" or "bootstrap". You gave "%s"', $framework));
         }
 
-        $this->grav['assets']->add(sprintf('plugin://blog/css/%s_blog.css', $framework));
+        $this->grav['assets']->add(sprintf('plugin://blog-injector/css/%s_blog.css', $framework));
         if ($this->config->get('plugins.blog.add_framework_assets')) {
             $method = 'add' . ucfirst($framework);
             $this->$method();
@@ -65,13 +65,13 @@ class BlogPlugin extends Plugin
 
     private function addBootstrap()
     {
-        $this->grav['assets']->add('plugin://blog/vendor/bootstrap/css/bootstrap.min.css', 100);
-        $this->grav['assets']->add('plugin://blog/vendor/bootstrap/js/bootstrap.min.js', 100);
+        $this->grav['assets']->add('plugin://blog-injector/vendor/bootstrap/css/bootstrap.min.css', 100);
+        $this->grav['assets']->add('plugin://blog-injector/vendor/bootstrap/js/bootstrap.min.js', 100);
     }
 
     private function addPure()
     {
-        $this->grav['assets']->add('plugin://blog/vendor/pure/grids-min.css', 100);
+        $this->grav['assets']->add('plugin://blog-injector/vendor/pure/grids-min.css', 100);
     }
 
     private function setUrls(Twig $twig)
@@ -82,7 +82,7 @@ class BlogPlugin extends Plugin
 
             return;
         }
-        
+
         $feedUrl = $baseUrl = $parent->url();
         if ($baseUrl == '/') {
             $baseUrl = $this->grav['page']->url();
