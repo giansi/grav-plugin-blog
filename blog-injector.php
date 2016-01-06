@@ -40,7 +40,7 @@ class BlogInjectorPlugin extends Plugin
      */
     public function onTwigSiteVariables()
     {
-        $framework = strtolower($this->config->get('plugins.blog.framework'));
+        $framework = strtolower($this->config->get('plugins.blog-injector.framework'));
         if (empty($framework)){
             throw new \InvalidArgumentException('The blog "framework" variable value must be defined. At the moment it is empty. If you are overriding the default configuration, please define the "framework" variable with a valid value.');
         }

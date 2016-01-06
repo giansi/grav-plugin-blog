@@ -1,3 +1,9 @@
+# v1.1.6
+## 01/06/2016
+
+1. [](#bugfix)
+    * Updated plugin variable retrieving with the new plugin name
+
 # v1.1.5
 ## 01/02/2016
 
