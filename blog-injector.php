@@ -52,7 +52,10 @@ class BlogInjectorPlugin extends Plugin
             throw new \InvalidArgumentException(sprintf('The blog "framework" variable value must be one of "pure" or "bootstrap". You gave "%s"', $framework));
         }
 
-        $this->grav['assets']->add(sprintf('plugin://blog-injector/css/%s_blog.css', $framework));
+        if ($this->config->get('plugins.blog-injector.add_default_css')) {
+            $this->grav['assets']->add(sprintf('plugin://blog-injector/css/%s_blog.css', $framework));
+        }
+
         if ($this->config->get('plugins.blog-injector.add_framework_assets')) {
             $method = 'add' . ucfirst($framework);
             $this->$method();

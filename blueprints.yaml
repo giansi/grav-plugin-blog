@@ -45,6 +45,18 @@ form:
           bootstrap: bootstrap
         help: Choose the framework to use
 
+      add_default_css:
+        type: toggle
+        label: Add default stylesheet
+        highlight: 1
+        default: 1
+        options:
+          1: Enabled
+          0: Disabled
+        validate:
+          type: bool
+        help: Automatically adds the included blog stylesheet according to the selected framework, when true
+
       add_framework_assets:
         type: toggle
         label: Add framework assets
