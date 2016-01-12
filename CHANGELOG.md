@@ -1,3 +1,11 @@
+# v1.1.7
+## 01/12/2016
+
+1. [](#new)
+    * Add option for excluding the default blog stylesheet
+2. [](#bugfix)
+    * Fix retrieval of settings for adding the framework assets
+
 # v1.1.6
 ## 01/06/2016
 
