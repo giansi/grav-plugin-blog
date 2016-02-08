@@ -86,13 +86,11 @@ class BlogInjectorPlugin extends Plugin
             return;
         }
 
-        $feedUrl = $baseUrl = $parent->url();
+        $baseUrl = $parent->url();
         if ($baseUrl == '/') {
             $baseUrl = $this->grav['page']->url();
         }
-        if ($baseUrl == $twig->twig_vars['base_url_relative']) {
-            $feedUrl = $baseUrl . $parent->slug();
-        }
+        $feedUrl = $baseUrl;
 
         $twig->twig_vars['blog_base_url'] = $baseUrl;
         $twig->twig_vars['blog_feed_url'] = $feedUrl;
