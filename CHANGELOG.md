@@ -1,3 +1,10 @@
+# v1.2.0
+## 03/19/2016
+
+1. [](#improved)
+    * Added multi language support
+    * Added Italian translation
+
 # v1.1.8
 ## 02/10/2016
 

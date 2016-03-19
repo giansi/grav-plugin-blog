@@ -128,11 +128,11 @@
 {% if show_prev_next or force_hide_prev_next|default(false) %}
 <p class="text-center">
     {% if not page.isFirst %}
-    <a class="btn btn-default" href="{{ page.nextSibling.url }}"><i class="fa fa-chevron-left"></i> Next Post</a>
+    <a class="btn btn-default" href="{{ page.nextSibling.url }}"><i class="fa fa-chevron-left"></i> {{ "PLUGIN_BLOG_INJECTOR.TEMPLATES.NEXT_POST"|t }}</a>
     {% endif %}
 
     {% if not page.isLast %}
-    <a class="btn btn-default" href="{{ page.prevSibling.url }}">Previous Post <i class="fa fa-chevron-right"></i></a>
+    <a class="btn btn-default" href="{{ page.prevSibling.url }}">{{ "PLUGIN_BLOG_INJECTOR.TEMPLATES.PREVIOUS_POST"|t }} <i class="fa fa-chevron-right"></i></a>
     {% endif %}
 </p>
 {% endif %}
@@ -141,7 +141,7 @@
 {% block sidebar_taxonomy %}
 {% if config.plugins.taxonomylist.enabled %}
 <div class="sidebar-content">
-    <{{ title_tag }}>Popular Tags</{{ title_tag }}>
+    <{{ title_tag }}>{{ "PLUGIN_BLOG_INJECTOR.TEMPLATES.POPULAR_TAGS"|t }}</{{ title_tag }}>
     
     {% set taxonomy = "tag" %}
     {% set taxlist = taxonomylist.get() %}
@@ -160,7 +160,7 @@
 {% block archives %}
 {% if config.plugins.archives.enabled %}
 <div class="sidebar-content">
-    <{{ title_tag }}>Archives</{{ title_tag }}>
+    <{{ title_tag }}>{{ "PLUGIN_BLOG_INJECTOR.TEMPLATES.ARCHIVES"|t }}</{{ title_tag }}>
 	<ul class="archives">
     {% for month,items in archives_data %}
         <li>
@@ -186,10 +186,10 @@
 {% block feed %}
 {% if config.plugins.feed.enabled %}
 <div class="sidebar-content">
-    <{{ title_tag }}>Syndicate</{{ title_tag }}>
+    <{{ title_tag }}>{{ "PLUGIN_BLOG_INJECTOR.TEMPLATES.SYNDICATE"|t }}</{{ title_tag }}>
     <div class="btn-group">
-        <a class="btn btn-warning" href="{{ blog_feed_url }}.atom"><i class="fa fa-rss-square"></i> Atom 1.0</a>
-        <a class="btn btn-warning" href="{{ blog_feed_url }}.rss"><i class="fa fa-rss-square"></i> RSS</a>
+        <a class="btn btn-warning" href="{{ blog_feed_url }}.atom"><i class="fa fa-rss-square"></i> {{ "PLUGIN_BLOG_INJECTOR.TEMPLATES.ATOM"|t }}</a>
+        <a class="btn btn-warning" href="{{ blog_feed_url }}.rss"><i class="fa fa-rss-square"></i> {{ "PLUGIN_BLOG_INJECTOR.TEMPLATES.RSS"|t }}</a>
     </div>
 </div>
 {% endif %}

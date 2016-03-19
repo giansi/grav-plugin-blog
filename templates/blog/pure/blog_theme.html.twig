@@ -129,14 +129,14 @@
     {% endif %}
 {% elseif truncate and page.summary != page.content %}
     {{ page.summary }}
-    <p><a href="{{ page.url }}">Continue Reading...</a></p>
+    <p><a href="{{ page.url }}">{{ "PLUGIN_BLOG_INJECTOR.TEMPLATES.CONTINUE_READING"|t }}</a></p>
 {% elseif truncate %}
     {% if page.summary != page.content %}
         {{ page.content|truncate(550) }}
     {% else %}
         {{ page.content }}
     {% endif %}
-    <p><a href="{{ page.url }}">Continue Reading...</a></p>
+    <p><a href="{{ page.url }}">{{ "PLUGIN_BLOG_INJECTOR.TEMPLATES.CONTINUE_READING"|t }}</a></p>
 {% else %}
     {{ page.content }}
     {% set show_prev_next = true %}
@@ -149,11 +149,11 @@
 {% if show_prev_next or force_hide_prev_next|default(false) %}
 <p class="prev-next">
     {% if not page.isFirst %}
-    <a class="button" href="{{ page.nextSibling.url }}"><i class="fa fa-chevron-left"></i> Next Post</a>
+    <a class="button" href="{{ page.nextSibling.url }}"><i class="fa fa-chevron-left"></i> {{ "PLUGIN_BLOG_INJECTOR.TEMPLATES.NEXT_POST"|t }}</a>
     {% endif %}
 
     {% if not page.isLast %}
-    <a class="button" href="{{ page.prevSibling.url }}">Previous Post <i class="fa fa-chevron-right"></i></a>
+    <a class="button" href="{{ page.prevSibling.url }}">{{ "PLUGIN_BLOG_INJECTOR.TEMPLATES.PREVIOUS_POST"|t }} <i class="fa fa-chevron-right"></i></a>
     {% endif %}
 </p>
 {% endif %}
@@ -164,6 +164,7 @@
 
 {{ block('simple_search') }}   
 {{ block('sidebar_taxonomy') }}   
+{{ block('sidebar_topictags') }}   
 {{ block('related_pages') }}   
 {{ block('random_page') }}   
 {{ block('archives') }}   
@@ -173,7 +174,7 @@
 {% block simple_search %}
 {% if config.plugins.simplesearch.enabled %}
 <div class="sidebar-content">
-    <{{ title_tag }}>SimpleSearch</{{ title_tag }}>
+    <{{ title_tag }}>{{ "PLUGIN_BLOG_INJECTOR.TEMPLATES.SEARCH_TITLE"|t }}</{{ title_tag }}>
     {% include 'partials/simplesearch_searchbox.html.twig' %}
 </div>
 {% endif %}
@@ -182,7 +183,7 @@
 {% block sidebar_taxonomy %}
 {% if config.plugins.taxonomylist.enabled %}
 <div class="sidebar-content">
-    <{{ title_tag }}>Popular Tags</{{ title_tag }}>
+    <{{ title_tag }}>{{ "PLUGIN_BLOG_INJECTOR.TEMPLATES.POPULAR_TAGS"|t }}</{{ title_tag }}>
     
     {% set taxonomy = "tag" %}
     {% set taxlist = taxonomylist.get() %}
@@ -201,7 +202,7 @@
 {% block sidebar_topictags %}
 {% if config.plugins.topicmenu.enabled %}
 <div class="sidebar-content">
-    <{{ title_tag }}>Popular Tags</{{ title_tag }}>
+    <{{ title_tag }}>{{ "PLUGIN_BLOG_INJECTOR.TEMPLATES.TOPIC_TAGS"|t }}</{{ title_tag }}>
     
     {% for taxlist in topics_tags %}
     <span class="tags">
@@ -218,7 +219,7 @@
 
 {% block related_pages %}
 {% if config.plugins.relatedpages.enabled and related_pages|length > 0 %}
-    <{{ title_tag }}>Related Posts</{{ title_tag }}>
+    <{{ title_tag }}>{{ "PLUGIN_BLOG_INJECTOR.TEMPLATES.RELATED_POSTS"|t }}</{{ title_tag }}>
     {% include 'partials/relatedpages.html.twig' %}
 {% endif %}
 {% endblock %}
@@ -226,8 +227,8 @@
 {% block random_page %}
 {% if config.plugins.random.enabled %}
 <div class="sidebar-content">
-    <{{ title_tag }}>Random Article</{{ title_tag }}>
-    <a class="button" href="{{ base_url_relative }}/random"><i class="fa fa-retweet"></i> I'm Feeling Lucky!</a>
+    <{{ title_tag }}>{{ "PLUGIN_BLOG_INJECTOR.TEMPLATES.RANDOM_ARTICLE"|t }}</{{ title_tag }}>
+    <a class="button" href="{{ base_url_relative }}/random"><i class="fa fa-retweet"></i> {{ "PLUGIN_BLOG_INJECTOR.TEMPLATES.FEEL_LUCKY"|t }}</a>
 </div>
 {% endif %}
 {% endblock %}
@@ -235,7 +236,7 @@
 {% block archives %}
 {% if config.plugins.archives.enabled %}
 <div class="sidebar-content">
-    <{{ title_tag }}>Archives</{{ title_tag }}>
+    <{{ title_tag }}>{{ "PLUGIN_BLOG_INJECTOR.TEMPLATES.ARCHIVES"|t }}</{{ title_tag }}>
 	{% include 'partials/archives.html.twig' with {'base_url':blog_base_url} %}
 </div>
 {% endif %}
@@ -244,10 +245,10 @@
 {% block feed %}
 {% if config.plugins.feed.enabled %}
 <div class="sidebar-content">
-    <{{ title_tag }}>Syndicate</{{ title_tag }}>
+    <{{ title_tag }}>{{ "PLUGIN_BLOG_INJECTOR.TEMPLATES.SYNDICATE"|t }}</{{ title_tag }}>
     <div class="btn-group">
-        <a href="{{ blog_feed_url }}.atom"><i class="fa fa-rss-square"></i> Atom 1.0</a>
-        <a href="{{ blog_feed_url }}.rss"><i class="fa fa-rss-square"></i> RSS</a>
+        <a href="{{ blog_feed_url }}.atom"><i class="fa fa-rss-square"></i> {{ "PLUGIN_BLOG_INJECTOR.TEMPLATES.ATOM"|t }}</a>
+        <a href="{{ blog_feed_url }}.rss"><i class="fa fa-rss-square"></i> {{ "PLUGIN_BLOG_INJECTOR.TEMPLATES.RSS"|t }}</a>
     </div>
 </div>
 {% endif %}
