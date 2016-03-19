@@ -48,3 +48,29 @@ it:
             FRAMEWORK: Scegli il framework da utilizzare
             DEFAULT_STYLESHEET: Aggiunge i fogli di stile del blog in base al framework selezionato, quando il valore è true
             FRAMEWORK_ASSETS: Aggiunge i fogli di stile del framework, quando il valore è true
+            
+fr:
+  PLUGIN_BLOG_INJECTOR:
+    TEMPLATES:
+      CONTINUE_READING: Continuer la lecture...
+      PREVIOUS_POST: Post précédent
+      NEXT_POST: Post suivant
+      SEARCH_TITLE: Rechercher
+      POPULAR_TAGS: Tags populaires
+      RELATED_POSTS: Posts en relation
+      TOPIC_TAGS: Tags de thème
+      RANDOM_ARTICLE: Article aléatoire
+      FEEL_LUCKY: J'ai de la chance !
+      ARCHIVES: Archives
+      SYNDICATE: Flux
+      ATOM: Atom 1.0
+      RSS: RSS
+    ADMIN:
+        PLUGIN_STATUS: Statut du plugin
+        FRAMEWORK: Framework
+        DEFAULT_STYLESHEET: Ajouter les feuilles de style par défaut
+        FRAMEWORK_ASSETS: Ajouter les éléments du framework
+        HELP:
+            FRAMEWORK: Choisir le framework à utiliser
+            DEFAULT_STYLESHEET: Ajoute automatiquement les feuilles de style de blog en fonction du framework choisi, lorsque défini sur true
+            FRAMEWORK_ASSETS: Ajoute automatiquement les éléments du framework sélectionné, lorsque défini sur true
