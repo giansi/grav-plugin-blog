@@ -1,4 +1,10 @@
 # v1.2.1
+## 04/10/2016
+
+1. [](#bugfix)
+    * Plugin is not loaded in admin mode
+
+# v1.2.1
 ## 03/20/2016
 
 1. [](#improved)

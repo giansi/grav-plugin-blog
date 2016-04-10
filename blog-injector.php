@@ -21,6 +21,11 @@ class BlogInjectorPlugin extends Plugin
      */
     public function onPluginsInitialized()
     {
+        // don't continue if this is admin and plugin is disabled for admin
+        if (!$this->grav['config']->get('plugins.shortcode-core.active_admin') && $this->isAdmin()) {
+            return;
+        }
+        
         $this->enable([
             'onTwigTemplatePaths' => ['onTwigTemplatePaths', 0],
             'onTwigSiteVariables' => ['onTwigSiteVariables', 0]
