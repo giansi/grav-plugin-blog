@@ -74,3 +74,28 @@ fr:
             FRAMEWORK: Choisir le framework à utiliser
             DEFAULT_STYLESHEET: Ajoute automatiquement les feuilles de style de blog en fonction du framework choisi, lorsque défini sur true
             FRAMEWORK_ASSETS: Ajoute automatiquement les éléments du framework sélectionné, lorsque défini sur true
+nl:
+  PLUGIN_BLOG_INJECTOR:
+    TEMPLATES:
+      CONTINUE_READING: Lees verder...
+      PREVIOUS_POST: Vorige bericht
+      NEXT_POST: Volgende bericht
+      SEARCH_TITLE: Zoeken
+      POPULAR_TAGS: Populaire tags
+      RELATED_POSTS: Gerelateerde berichten
+      TOPIC_TAGS: Actueele tags
+      RANDOM_ARTICLE: Willekeurig artikel
+      FEEL_LUCKY: Ik doe een gok!
+      ARCHIVES: Archief
+      SYNDICATE: Syndicate
+      ATOM: Atom 1.0
+      RSS: RSS
+    ADMIN:
+        PLUGIN_STATUS: Plugin status
+        FRAMEWORK: Framework
+        DEFAULT_STYLESHEET: Standard stijlsheet toevoegen
+        FRAMEWORK_ASSETS: Framework ondersteuning toevoegen
+        HELP:
+            FRAMEWORK: Kies framework om te gebruiken
+            DEFAULT_STYLESHEET: Voegt automatisch de bijgevoegde blog stijlsheet toe van geselecteerd framework, wanneer ingeschakeld
+            FRAMEWORK_ASSETS: Voegt automatisch geselecteerd framework toe, wanneer ingeschakeld
