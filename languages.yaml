@@ -23,6 +23,31 @@ en:
             FRAMEWORK: Choose the framework to use
             DEFAULT_STYLESHEET: Automatically adds the included blog stylesheet according to the selected framework, when true
             FRAMEWORK_ASSETS: Automatically adds selected framework assets, when true
+de:
+  PLUGIN_BLOG_INJECTOR:
+    TEMPLATES:
+      CONTINUE_READING: weiterlesen...
+      PREVIOUS_POST: vorheriger Artikel
+      NEXT_POST: nächster Artikel
+      SEARCH_TITLE: Suche
+      POPULAR_TAGS: populäre Tags
+      RELATED_POSTS: ähnliche Artikel
+      TOPIC_TAGS: Themenstichworte
+      RANDOM_ARTICLE: zufälliger Artikel
+      FEEL_LUCKY: Ich fühle mich glücklich!
+      ARCHIVES: Archive
+      SYNDICATE: Syndikat
+      ATOM: Atom 1.0
+      RSS: RSS
+    ADMIN:
+        PLUGIN_STATUS: Plugin Status
+        FRAMEWORK: Framework
+        DEFAULT_STYLESHEET: Standard Stylesheet hinzufügen
+        FRAMEWORK_ASSETS: Framework Assets hinzufügen
+        HELP:
+            FRAMEWORK: Wählen sie das zu verwendenende Framework
+            DEFAULT_STYLESHEET: Automatisch das inkludierte Blog Stylesheet entsprechend dem ausgewählten Framework hinzufügen, wenn wahr
+            FRAMEWORK_ASSETS: Automatisch ausgewähltes Framework Assets hinzufügen, wenn wahr
 it:
   PLUGIN_BLOG_INJECTOR:
     TEMPLATES:
