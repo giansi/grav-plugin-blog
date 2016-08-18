@@ -1,4 +1,10 @@
-# v1.2.1
+# v1.2.3
+## 08/18/2016
+
+1. [](#improved)
+    * Added Dutch translation
+
+# v1.2.2
 ## 04/10/2016
 
 1. [](#bugfix)
