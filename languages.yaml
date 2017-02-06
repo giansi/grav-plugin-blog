@@ -124,3 +124,28 @@ nl:
             FRAMEWORK: Kies framework om te gebruiken
             DEFAULT_STYLESHEET: Voegt automatisch de bijgevoegde blog stijlsheet toe van geselecteerd framework, wanneer ingeschakeld
             FRAMEWORK_ASSETS: Voegt automatisch geselecteerd framework toe, wanneer ingeschakeld
+hu:
+  PLUGIN_BLOG_INJECTOR:
+    TEMPLATES:
+      CONTINUE_READING: Tovább...
+      PREVIOUS_POST: Előző
+      NEXT_POST: Következő
+      SEARCH_TITLE: Keresés
+      POPULAR_TAGS: Népszerű
+      RELATED_POSTS: Kapcsolódó
+      TOPIC_TAGS: Témakörök
+      RANDOM_ARTICLE: Véletlen
+      FEEL_LUCKY: Szerencsés vagyok!
+      ARCHIVES: Archív
+      SYNDICATE: Syndicate
+      ATOM: Atom 1.0
+      RSS: RSS
+    ADMIN:
+        PLUGIN_STATUS: Plugin státusz
+        FRAMEWORK: Keretrendszer
+        DEFAULT_STYLESHEET: Alapértelmezett stílus hozzáadása
+        FRAMEWORK_ASSETS: Keretrendszer fájlok hozzáadása
+        HELP:
+            FRAMEWORK: Válassz keretrendszert
+            DEFAULT_STYLESHEET: Automatikusan hozzáadja a kiválasztott keretrendszer stílusfájljait (a pluginhoz tartozó default CSS-t), ha engedélyezett
+            FRAMEWORK_ASSETS: Automatikusan hozzáadja a kiválasztott keretrendszer fájljait (CSS, JS), ha engedélyezett
