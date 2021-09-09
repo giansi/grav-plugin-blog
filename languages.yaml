@@ -77,13 +77,13 @@ it:
 fr:
   PLUGIN_BLOG_INJECTOR:
     TEMPLATES:
-      CONTINUE_READING: Continuer la lecture...
-      PREVIOUS_POST: Post précédent
-      NEXT_POST: Post suivant
+      CONTINUE_READING: Continuer la lecture…
+      PREVIOUS_POST: Article précédent
+      NEXT_POST: Article suivant
       SEARCH_TITLE: Rechercher
-      POPULAR_TAGS: Tags populaires
-      RELATED_POSTS: Posts en relation
-      TOPIC_TAGS: Tags de thème
+      POPULAR_TAGS: Mots-clés populaires
+      RELATED_POSTS: Articles en relation
+      TOPIC_TAGS: Mots-clés de thème
       RANDOM_ARTICLE: Article aléatoire
       FEEL_LUCKY: J'ai de la chance !
       ARCHIVES: Archives
@@ -91,7 +91,7 @@ fr:
       ATOM: Atom 1.0
       RSS: RSS
     ADMIN:
-        PLUGIN_STATUS: Statut du plugin
+        PLUGIN_STATUS: État du plugin
         FRAMEWORK: Framework
         DEFAULT_STYLESHEET: Ajouter les feuilles de style par défaut
         FRAMEWORK_ASSETS: Ajouter les éléments du framework
